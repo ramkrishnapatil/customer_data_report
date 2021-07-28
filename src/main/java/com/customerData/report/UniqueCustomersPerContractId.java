@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * This will generate the Unique customers reprot per Contract Id.
+ * This will generate the Unique customers report per Contract Id.
  */
 public class UniqueCustomersPerContractId implements IReport<Integer> {
 

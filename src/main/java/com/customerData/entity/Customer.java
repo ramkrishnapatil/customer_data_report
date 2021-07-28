@@ -1,6 +1,10 @@
 package com.customerData.entity;
 
 
+import com.customerData.util.PrintUtil;
+
+import java.time.Duration;
+
 public class Customer {
 
     private int id;
@@ -13,12 +17,28 @@ public class Customer {
 
     private String projectCode;
 
-    private int buildDuration;
+    private Duration buildDuration;
+
+    private static final String DURATION_PT = "PT";
 
     /**
      * Constructor
      */
-    public Customer() {
+    public Customer(final String line) {
+        final String[] attributes = line.split(",");
+        try {
+            id = Integer.parseInt(attributes[CustomerField.ID.ordinal()].trim());
+            contractId = Integer.parseInt(attributes[CustomerField.CONTRACT_ID.ordinal()].trim());
+            geoZone = attributes[CustomerField.GEO_ZONE.ordinal()].trim();
+            teamCode = attributes[CustomerField.TEAM_CODE.ordinal()].trim();
+            projectCode = attributes[CustomerField.PROJECT_CODE.ordinal()].trim();
+            buildDuration = Duration.parse(DURATION_PT + attributes[CustomerField.BUILD_DURATION.ordinal()].trim());
+        } catch (NumberFormatException nFE) {
+            PrintUtil.printData("record has invalid ids : " + line + " \n with exception: " + nFE.getMessage());
+        }
+        catch (final Exception e) {
+            PrintUtil.printData("record not loaded due to invalid syntax: " + line + " \n with exception: " + e.getMessage());
+        }
     }
 
     public int getId() {
@@ -41,7 +61,7 @@ public class Customer {
         return projectCode;
     }
 
-    public int getBuildDuration() {
+    public Duration getBuildDuration() {
         return buildDuration;
     }
 

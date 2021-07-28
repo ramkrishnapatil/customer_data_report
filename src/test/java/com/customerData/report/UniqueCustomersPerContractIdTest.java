@@ -1,24 +1,28 @@
 package com.customerData.report;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import com.customerData.CustomerDataMainApp;
+import com.customerData.entity.Customer;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 public class UniqueCustomersPerContractIdTest {
 
     private static UniqueCustomersPerContractId uniqueCustomersPerContractId;
+    private static List<Customer> customerList;
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
+        final String[] inputArgs = {"SampleData.txt"};
+        CustomerDataMainApp customerDataMainApp = new CustomerDataMainApp();
+        customerList = customerDataMainApp.createCustomers(inputArgs);
         uniqueCustomersPerContractId = new UniqueCustomersPerContractId();
     }
 
     @Test
-    public void testUniqueCustomersPerContractId() {
-        final String fileName = "SampleData.txt";
-        // This shall generate 2 for 2346
-        //        uniqueCustomersPerContractId.generate() = 2
+    void testUniqueCustomersPerContractId() {
+        Assertions.assertEquals(uniqueCustomersPerContractId.generate(customerList).orElse(0), 2);
     }
 }
