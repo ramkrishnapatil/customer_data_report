@@ -1,0 +1,7 @@
+2343225,2345,us_east,RedTeam,ProjectApple,3445s
+ABC,2345,us_west,BlueTeam,ProjectBanana,2211s
+324#4332,2346,eu_west,YellowTeam3,ProjectCarrot,4322s
+1233456,23A45,us_west,BlueTeam,ProjectDate,2221s
+3244132,23!46,eu_west,YellowTeam3,ProjectEgg,4122s
+3244132,2346,eu_west,YellowTeam3,ProjectEgg,4122aa
+3244132 ,2346 ,  eu_west ,YellowTeam3,ProjectEgg,4122s
