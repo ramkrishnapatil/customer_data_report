@@ -21,12 +21,13 @@ public class UniqueCustomersListPerGeoZone implements IReport {
     public void generate(List<Customer> customers) {
 
         PrintUtil.printData("The number of unique customerId for each geozone");
+        PrintUtil.print(IReport.SEP_LINE);
         PrintUtil.printData(IReport.SEP_LINE);
 
         customers.stream()
                 .filter(distinctByKey(Customer::getGeoZone))
                 .forEach(c -> uniqueCustomers(customers, c.getGeoZone()));
-
+        PrintUtil.print(IReport.SEP_LINE);
         PrintUtil.printData(IReport.SEP_LINE);
     }
 
@@ -41,8 +42,8 @@ public class UniqueCustomersListPerGeoZone implements IReport {
                                                     .filter(c -> c.getGeoZone().equals(geoZone))
                                                     .filter(distinctByKey(Customer::getId))
                                                     .collect(Collectors.toList());
-        PrintUtil.print( "|     "   + geoZone + "      |       ");
-        uniqueCustomers.forEach(c -> PrintUtil.print( c.getId() + "      |"));
+        PrintUtil.print( "|     "   + geoZone + "      |");
+        uniqueCustomers.forEach(c -> PrintUtil.print("       " + c.getId() + "      |"));
         PrintUtil.printData("");
         return Collections.unmodifiableList(uniqueCustomers);
     }
