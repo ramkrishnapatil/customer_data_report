@@ -6,6 +6,10 @@ package com.customerData.util;
  * decides to use any library(e.g. LOG4J).
  */
 public final class PrintUtil {
+
+    private PrintUtil() {
+    }
+
     public static void print(String printString) {
         System.out.print(printString);
     }

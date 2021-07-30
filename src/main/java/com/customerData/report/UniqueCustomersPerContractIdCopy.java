@@ -4,13 +4,14 @@ import com.customerData.entity.Customer;
 import com.customerData.util.PrintUtil;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.customerData.filter.FilterCustomer.distinctByKey;
 
 /**
  * This will generate the Unique customers report per Contract Id.
  */
-public class UniqueCustomersPerContractId implements IReport {
+public class UniqueCustomersPerContractIdCopy implements IReport {
 
     /**
      * {@inheritDoc}
@@ -20,11 +21,11 @@ public class UniqueCustomersPerContractId implements IReport {
         PrintUtil.printData("The number of unique customerId for each contractId");
         PrintUtil.printData(IReport.SEP_LINE);
 
-        customers.stream()
-                .filter(distinctByKey(Customer::getContractId))
-                 .mapToInt(Customer::getContractId)
-                .forEach(contractId -> uniqueCustomers(customers, contractId));
+        List<Customer> customersByContractId = customers.stream()
+                                                        .filter(distinctByKey(Customer::getContractId))
+                                                        .collect(Collectors.toList());
 
+        customersByContractId.forEach(c -> uniqueCustomerPerContractId(customers, c.getContractId()));
         PrintUtil.printData(IReport.SEP_LINE);
     }
 
@@ -34,7 +35,7 @@ public class UniqueCustomersPerContractId implements IReport {
      * @param contractId ConractId
      * @return Number of matching unique Customers
      */
-    final int uniqueCustomers(final List<Customer> customers, final int contractId) {
+    final int uniqueCustomerPerContractId(final List<Customer> customers, final int contractId) {
         int uniqueCustomers = (int) customers.stream()
                                             .filter(c -> c.getContractId() == contractId)
                                             .filter(distinctByKey(Customer::getId))

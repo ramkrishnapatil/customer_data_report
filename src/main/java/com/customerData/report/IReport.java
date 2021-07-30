@@ -3,12 +3,17 @@ package com.customerData.report;
 import com.customerData.entity.Customer;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
- * Report service.
+ * Report interface.
  */
-public interface IReport<T> {
+public interface IReport {
 
-    public Optional<T> generate(List<Customer> customers);
+    String SEP_LINE = "-------------------------------------------";
+
+    /**
+     * Generate the report for given customers
+     * @param customers
+     */
+    void generate(List<Customer> customers);
 }

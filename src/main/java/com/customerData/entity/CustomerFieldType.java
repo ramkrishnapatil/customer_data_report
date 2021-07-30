@@ -3,7 +3,7 @@ package com.customerData.entity;
 /**
  * Enumeration to represent the Customer data order in the input String
  */
-public enum CustomerField {
+public enum CustomerFieldType {
     ID,
     CONTRACT_ID,
     GEO_ZONE,

@@ -5,8 +5,12 @@ plugins {
     id 'jacoco'
 }
 
-group 'org.oracle'
+group 'oracle'
 version '1.0'
+
+mainClassName = 'com.customerData.CustomerDataMainApp'
+
+sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
