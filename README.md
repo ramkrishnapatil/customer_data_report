@@ -47,13 +47,15 @@ UniqueCustomersListPerGeoZone
 * Generates the report of unique customers list per Geo Zone.
 
 PrintUtil
-* Print the information. As the challenge says use minimum libraries. Not using logger libraries.
+* This print's the data.
+* This is wrapper to System.print.
+* It will be easy change to use logger library
 
 FilterCustomer:
 * Filters duplicate Customer records by given key.
 
 ### Further Improvements:
-* Use the logger for logging.
+* Update PrintUtil and Use the logger library e.g. LOG4J.
 * Generate reports in XML, JSON formats
 * Rather than reading the file at once, read and parse it in parts for faster response.
 * Make the report service as continuous running. So that, on file update new reports will be generated.
