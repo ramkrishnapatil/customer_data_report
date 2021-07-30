@@ -59,3 +59,28 @@ FilterCustomer:
 * Generate reports in XML, JSON formats
 * Rather than reading the file at once, read and parse it in parts for faster response.
 * Make the report service as continuous running. So that, on file update new reports will be generated.
+
+
+### Sample Input and Output
+
+2343225,2345,us_east,RedTeam,ProjectApple,3445s
+2343225,2345,us_east,RedTeam,ProjectApple,3445s
+1223456,2345,us_west,BlueTeam,ProjectBanana,2211s
+3244332,2346,eu_west,YellowTeam3,ProjectCarrot,4322s
+1233456,2345,us_west,BlueTeam,ProjectDate,2221s
+1233456,2345,us_west,BlueTeam,ProjectDate,2221s
+3244132,2346,eu_west,YellowTeam3,ProjectEgg,4122s
+
+```
+The number of unique customerId for each contractId
+-------------------------------------------
+|     2345      |       3      |
+|     2346      |       2      |
+-------------------------------------------
+The number of unique customerId for each geozone
+-------------------------------------------
+|     us_east      |       1      |
+|     us_west      |       2      |
+|     eu_west      |       2      |
+-------------------------------------------
+```
