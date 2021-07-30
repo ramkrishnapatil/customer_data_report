@@ -2,27 +2,28 @@ package com.customerData.report;
 
 import com.customerData.CustomerDataMainApp;
 import com.customerData.entity.Customer;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-public class UniqueCustomersPerContractIdTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class UniqueCustomersPerContractIdTest {
 
     private static UniqueCustomersPerContractId uniqueCustomersPerContractId;
-    private static List<Customer> customerList;
 
     @BeforeAll
-    public static void init() {
-        final String[] inputArgs = {"SampleData.txt"};
-        CustomerDataMainApp customerDataMainApp = new CustomerDataMainApp();
-        customerList = customerDataMainApp.createCustomers(inputArgs);
+    static void init() {
         uniqueCustomersPerContractId = new UniqueCustomersPerContractId();
     }
 
     @Test
     void testUniqueCustomersPerContractId() {
-        Assertions.assertEquals(uniqueCustomersPerContractId.generate(customerList).orElse(0), 2);
+        final String[] inputArgs = {"SampleDataValid.txt"};
+        final List<Customer> customers = new CustomerDataMainApp().getCustomers(inputArgs);
+        assertEquals(3, uniqueCustomersPerContractId.uniqueCustomers(customers, 2345));
+        assertEquals(2, uniqueCustomersPerContractId.uniqueCustomers(customers, 2346));
+        assertEquals(0, uniqueCustomersPerContractId.uniqueCustomers(customers, 2347));
     }
 }
