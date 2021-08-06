@@ -22,7 +22,7 @@ public class UniqueCustomersPerContractId implements IReport {
 
         customers.stream()
                 .filter(distinctByKey(Customer::getContractId))
-                 .mapToInt(Customer::getContractId)
+                .mapToInt(Customer::getContractId)
                 .forEach(contractId -> uniqueCustomers(customers, contractId));
 
         PrintUtil.printData(IReport.SEP_LINE);

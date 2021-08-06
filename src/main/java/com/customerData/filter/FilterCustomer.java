@@ -17,7 +17,7 @@ public final class FilterCustomer {
      * Filter by a specific attribute.
      */
     public static <T> Predicate<T> distinctByKey(Function<T, Object> function) {
-        Set<Object> seen = new HashSet<>();
-        return t -> seen.add(function.apply(t));
+        Set<Object> customers = new HashSet<>();
+        return t -> customers.add(function.apply(t));
     }
 }

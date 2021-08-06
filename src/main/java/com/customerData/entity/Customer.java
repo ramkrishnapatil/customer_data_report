@@ -56,8 +56,4 @@ public class Customer {
     public Duration getBuildDuration() {
         return buildDuration;
     }
-
-    public boolean valid() {
-        return id != 0 && contractId != 0 && geoZone != null && teamCode != null && buildDuration != null;
-    }
 }

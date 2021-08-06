@@ -18,6 +18,13 @@ import java.util.stream.Stream;
  */
 public class CustomerDataMainApp {
 
+    private static final String SPLIT = ",";
+    private static final String SPACES = "\\s*";
+    private static final String WORD_WITH_SPACES = SPACES + "(\\w+)" + SPACES;
+    private static final String NUMBER_WITH_SPACES = SPACES + "(\\d+)" + SPACES;
+    private static final String CUSTOMER_DATA_PATTERN = "^" + NUMBER_WITH_SPACES + SPLIT + NUMBER_WITH_SPACES + SPLIT + WORD_WITH_SPACES + SPLIT
+            + WORD_WITH_SPACES + SPLIT + WORD_WITH_SPACES + SPLIT + SPACES + "(\\d+)s" + SPACES + "$";
+
     /**
      * Main method
      * @param args 0 - User Input, 1 - File Input
@@ -33,9 +40,9 @@ public class CustomerDataMainApp {
      * @return Customer list
      */
     public List<Customer> getCustomers(final String[] args) {
-        Stream<String> data = input(args);
-        List<Customer> customers = data.map(Customer::new)
-                                    .filter(Customer::valid)
+        List<Customer> customers = input(args)
+                                    .filter(str -> str.matches(CUSTOMER_DATA_PATTERN))
+                                    .map(Customer::new)
                                     .collect(Collectors.toList());
         return Collections.unmodifiableList(customers);
     }
