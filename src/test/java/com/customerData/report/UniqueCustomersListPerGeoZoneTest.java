@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class UniqueCustomersListPerGeoZoneTest {
 
     @Test
-    void testAveragePerGeoZone() {
+    void testUniqueCustomersPerGeoZone() {
         final String[] inputArgs = {"SampleData.txt"};
         final List<Customer> customers = new CustomerDataMainApp().getCustomers(inputArgs);
         UniqueCustomersListPerGeoZone customersPerGeoZone = new UniqueCustomersListPerGeoZone();

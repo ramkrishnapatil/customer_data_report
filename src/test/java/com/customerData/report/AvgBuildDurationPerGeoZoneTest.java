@@ -13,7 +13,7 @@ class AvgBuildDurationPerGeoZoneTest {
     private static final double DELTA = 0.1;
 
     @Test
-    void testAveragePerGeoZone1() {
+    void testAveragePerGeoZone() {
         final String[] inputArgs = {"SampleDataValid.txt"};
         final List<Customer> customers = new CustomerDataMainApp().getCustomers(inputArgs);
         AvgBuildDurationPerGeoZone avgDuration = new AvgBuildDurationPerGeoZone();
@@ -24,7 +24,7 @@ class AvgBuildDurationPerGeoZoneTest {
     }
 
     @Test
-    void testAveragePerGeoZone2() {
+    void testAveragePerGeoZoneForSampleData() {
         final String[] inputArgs = {"SampleData.txt"};
         final List<Customer> customers = new CustomerDataMainApp().getCustomers(inputArgs);
         AvgBuildDurationPerGeoZone avgDuration = new AvgBuildDurationPerGeoZone();

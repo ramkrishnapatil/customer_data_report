@@ -23,7 +23,7 @@ class UniqueCustomersPerGeoZoneTest {
     }
 
     @Test
-    void testAveragePerGeoZone1() {
+    void testAveragePerGeoZoneForDuplicateCustomerId() {
         final String[] inputArgs = {"SampleDataValid.txt"};
         CustomerDataMainApp customerDataMainApp = new CustomerDataMainApp();
         List<Customer> customers = customerDataMainApp.getCustomers(inputArgs);
