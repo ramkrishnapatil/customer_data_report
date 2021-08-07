@@ -42,7 +42,7 @@ public class AvgBuildDurationPerGeoZone implements IReport {
     final double avgBuildDuration(final List<Customer> customers, final String geoZone) {
         double average =  customers.stream()
                                     .filter(c -> c.getGeoZone().equals(geoZone))
-                                    .mapToLong(c -> c.getBuildDuration().getSeconds())
+                                    .mapToLong(Customer::getBuildDuration)
                                     .average()
                                     .orElse(DEFAULT_AVERAGE);
         PrintUtil.printData( "|     "   + geoZone + "      |       " + String.format("%.2f", average) + "      |");

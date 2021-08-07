@@ -17,7 +17,7 @@ public class Customer {
 
     private String projectCode;
 
-    private Duration buildDuration;
+    private long buildDuration;
 
     private static final String DURATION_PT = "PT";
 
@@ -32,7 +32,8 @@ public class Customer {
             geoZone = attributes[CustomerFieldType.GEO_ZONE.ordinal()].trim();
             teamCode = attributes[CustomerFieldType.TEAM_CODE.ordinal()].trim();
             projectCode = attributes[CustomerFieldType.PROJECT_CODE.ordinal()].trim();
-            buildDuration = Duration.parse(DURATION_PT + attributes[CustomerFieldType.BUILD_DURATION.ordinal()].trim());
+            String duration = attributes[CustomerFieldType.BUILD_DURATION.ordinal()].trim();
+            buildDuration = Integer.parseInt(duration.substring(0, duration.length()-1));
         } catch (NumberFormatException nFE) {
             PrintUtil.printData("record has invalid ids : " + line + " \n with exception: " + nFE.getMessage());
         }
@@ -53,7 +54,7 @@ public class Customer {
         return geoZone;
     }
 
-    public Duration getBuildDuration() {
+    public long getBuildDuration() {
         return buildDuration;
     }
 }
